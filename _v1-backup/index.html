@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UMCO — Pakistan's Leading Financial Consultancy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F8FAFC;
+      --bg-card: #FFFFFF;
+      --ink: #0F172A;
+      --ink-muted: #64748B;
+      --ink-subtle: #94A3B8;
+      --accent: #10B981;
+      --accent-dark: #059669;
+      --accent-bg: #ECFDF5;
+      --border: #E2E8F0;
+      --shadow-sm: 0 1px 3px rgba(15,23,42,0.06), 0 1px 2px rgba(15,23,42,0.04);
+      --shadow-md: 0 4px 16px rgba(15,23,42,0.08), 0 2px 6px rgba(15,23,42,0.04);
+      --shadow-lg: 0 20px 48px rgba(15,23,42,0.10), 0 8px 16px rgba(15,23,42,0.06);
+      --radius: 12px;
+      --radius-sm: 8px;
+      --radius-pill: 999px;
+      --transition: 300ms ease-in-out;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── UTILITIES ── */
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent-bg); color: var(--accent-dark);
+      font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      padding: 5px 12px; border-radius: var(--radius-pill);
+    }
+    .badge svg { flex-shrink: 0; }
+
+    /* ── NAVIGATION ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(248,250,252,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: box-shadow var(--transition);
+    }
+    nav.scrolled { box-shadow: var(--shadow-md); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex; align-items: center;
+      text-decoration: none; color: var(--ink);
+    }
+    .nav-logo img {
+      height: 40px; width: auto; display: block;
+      mix-blend-mode: multiply;
+    }
+    footer .nav-logo img { mix-blend-mode: normal; }
+    .nav-links {
+      display: flex; align-items: center; gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      text-decoration: none; color: var(--ink-muted);
+      font-size: 14px; font-weight: 500;
+      padding: 6px 14px; border-radius: var(--radius-sm);
+      transition: color var(--transition), background var(--transition);
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: inherit; font-size: 14px; font-weight: 600;
+      padding: 10px 20px; border-radius: var(--radius-sm);
+      border: none; cursor: pointer;
+      text-decoration: none;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 0 0 0 rgba(16,185,129,0);
+    }
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      box-shadow: 0 4px 20px rgba(16,185,129,0.35);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: transparent; color: var(--ink);
+      border: 1.5px solid var(--border);
+    }
+    .btn-secondary:hover {
+      border-color: var(--ink-subtle);
+      background: var(--bg-card);
+      transform: translateY(-1px);
+    }
+    .btn-ghost {
+      background: var(--bg-card); color: var(--ink);
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-ghost:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 148px 0 96px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+    }
+    .hero-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+      object-position: center 30%;
+    }
+    .hero-bg-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(248,250,252,0.91) 0%,
+        rgba(248,250,252,0.82) 50%,
+        rgba(248,250,252,0.95) 100%
+      );
+    }
+    .hero > .container { position: relative; z-index: 1; }
+    .hero-eyebrow { margin-bottom: 28px; }
+    .hero h1 {
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--ink);
+      max-width: 820px; margin: 0 auto 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent) 0%, #06B6D4 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 18px; font-weight: 400; color: var(--ink-muted);
+      max-width: 540px; margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .hero-ctas .btn { padding: 13px 24px; font-size: 15px; }
+    .trust-row {
+      margin-top: 64px;
+      display: flex; align-items: center; justify-content: center; gap: 32px;
+      flex-wrap: wrap;
+    }
+    .trust-divider { width: 1px; height: 24px; background: var(--border); }
+    .trust-item {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--ink-muted); font-size: 13px; font-weight: 500;
+    }
+    .trust-item svg { color: var(--accent); }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 96px 0; }
+    .section-label {
+      font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent-dark); margin-bottom: 16px;
+    }
+    .section-heading {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800; letter-spacing: -0.025em; line-height: 1.15;
+      color: var(--ink);
+    }
+    .section-sub {
+      font-size: 17px; color: var(--ink-muted); line-height: 1.7; margin-top: 16px;
+    }
+
+    /* ── SERVICES ── */
+    .services { background: var(--bg); }
+    .services-header { text-align: center; max-width: 580px; margin: 0 auto 64px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 0;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid transparent;
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), #06B6D4);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform var(--transition);
+      z-index: 2;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--border);
+    }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-card:hover .service-img img { transform: scale(1.05); }
+    .service-img {
+      width: 100%; height: 180px; overflow: hidden;
+      position: relative;
+    }
+    .service-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 500ms ease-in-out;
+      display: block;
+    }
+    .service-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(15,23,42,0.18) 100%);
+    }
+    .service-body { padding: 28px 28px 28px; }
+    .service-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-bg); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px; color: var(--accent);
+    }
+    .service-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .service-card p { font-size: 13.5px; color: var(--ink-muted); line-height: 1.7; }
+    .service-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 20px; font-size: 13px; font-weight: 600;
+      color: var(--accent-dark); text-decoration: none;
+      transition: gap var(--transition);
+    }
+    .service-link:hover { gap: 10px; }
+
+    /* ── STATS ── */
+    .stats { background: var(--ink); color: #fff; padding: 72px 0; }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px; background: rgba(255,255,255,0.06);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .stat-item {
+      padding: 48px 40px;
+      background: var(--ink);
+      text-align: center;
+      transition: background var(--transition);
+    }
+    .stat-item:hover { background: #1E293B; }
+    .stat-number {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 800; letter-spacing: -0.04em;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.55);
+      margin-top: 10px; line-height: 1.5;
+    }
+    .stat-desc {
+      font-size: 12px; color: rgba(255,255,255,0.3);
+      margin-top: 6px;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--bg); }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .about-content .section-sub { max-width: 440px; }
+    .about-pillars { margin-top: 36px; display: flex; flex-direction: column; gap: 20px; }
+    .pillar {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 20px; border-radius: var(--radius-sm);
+      transition: background var(--transition);
+    }
+    .pillar:hover { background: var(--bg-card); }
+    .pillar-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--accent); margin-top: 6px; flex-shrink: 0;
+    }
+    .pillar h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .pillar p { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
+    .about-visual {
+      position: relative;
+    }
+    .about-card-main {
+      background: var(--bg-card);
+      border-radius: var(--radius);
+      padding: 36px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+    }
+    .about-card-main h3 { font-size: 15px; font-weight: 700; margin-bottom: 20px; color: var(--ink-muted); }
+    .expertise-list { display: flex; flex-direction: column; gap: 14px; }
+    .expertise-item { display: flex; align-items: center; justify-content: space-between; }
+    .expertise-label { font-size: 13px; font-weight: 600; }
+    .expertise-bar-wrap { width: 140px; height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+    .expertise-bar { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--accent), #06B6D4); }
+    .about-card-float {
+      position: absolute; bottom: -24px; right: -24px;
+      background: var(--accent); color: #fff;
+      border-radius: var(--radius); padding: 20px 24px;
+      box-shadow: 0 8px 32px rgba(16,185,129,0.3);
+      text-align: center;
+    }
+    .about-card-float .num { font-size: 28px; font-weight: 800; letter-spacing: -0.03em; }
+    .about-card-float .lbl { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 2px; }
+
+    /* ── TESTIMONIAL SLIDER ── */
+    .testimonial { background: #F1F5F9; padding: 96px 0; overflow: hidden; }
+    .testimonial-header { text-align: center; margin-bottom: 56px; }
+    .slider-viewport { overflow: hidden; }
+    .slider-track {
+      display: flex;
+      transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+    .slide {
+      min-width: 100%; padding: 0 16px;
+      display: flex; justify-content: center;
+    }
+    .testimonial-card {
+      background: #fff;
+      border-radius: var(--radius);
+      padding: 48px 52px;
+      max-width: 760px; width: 100%;
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      position: relative;
+    }
+    .stars {
+      display: flex; justify-content: center; gap: 4px; margin-bottom: 24px;
+    }
+    .stars svg { color: #F59E0B; }
+    .quote-mark {
+      font-size: 80px; line-height: 0.5; color: var(--accent);
+      font-weight: 800; margin-bottom: 20px; display: block;
+    }
+    .testimonial-text {
+      font-size: 20px; font-weight: 500; color: var(--ink);
+      line-height: 1.65; margin-bottom: 36px;
+      letter-spacing: -0.01em;
+    }
+    .testimonial-author { display: flex; align-items: center; justify-content: center; gap: 14px; }
+    .author-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #06B6D4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 800; color: #fff; flex-shrink: 0;
+    }
+    .author-name { font-size: 14px; font-weight: 700; text-align: left; }
+    .author-role { font-size: 12px; color: var(--ink-muted); text-align: left; }
+    .slider-controls {
+      display: flex; align-items: center; justify-content: center;
+      gap: 16px; margin-top: 40px;
+    }
+    .slider-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: #fff; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ink-muted);
+      transition: all var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    .slider-btn:hover { border-color: var(--accent); color: var(--accent); box-shadow: var(--shadow-md); }
+    .slider-dots { display: flex; gap: 8px; }
+    .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--border); cursor: pointer;
+      transition: all var(--transition);
+      border: none; padding: 0;
+    }
+    .dot.active { background: var(--accent); width: 24px; border-radius: 4px; }
+    @media (max-width: 640px) {
+      .testimonial-card { padding: 32px 24px; }
+      .testimonial-text { font-size: 17px; }
+    }
+
+    /* ── CONSULTATION FORM ── */
+    .consult { background: var(--bg); padding: 96px 0; }
+    .consult-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .consult-left .section-sub { max-width: 400px; margin-top: 16px; }
+    .consult-perks { margin-top: 40px; display: flex; flex-direction: column; gap: 14px; }
+    .consult-perk {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 14px; font-weight: 500; color: var(--ink-muted);
+    }
+    .consult-perk svg { color: var(--accent); flex-shrink: 0; }
+
+    .consult-form { display: flex; flex-direction: column; gap: 32px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    .field { position: relative; }
+    .field label {
+      display: block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink-subtle); margin-bottom: 10px;
+      transition: color 300ms ease;
+    }
+    .field:focus-within label { color: var(--accent-dark); }
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%; background: transparent; border: none; outline: none;
+      border-bottom: 1.5px solid var(--border);
+      font-family: inherit; font-size: 15px; font-weight: 500;
+      color: var(--ink); padding: 8px 0 12px;
+      transition: border-color 300ms ease;
+      appearance: none; -webkit-appearance: none;
+    }
+    .field textarea { resize: none; height: 80px; line-height: 1.6; }
+    .field select {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 4px center;
+      padding-right: 28px;
+    }
+    .field select option { color: var(--ink); background: #fff; }
+    .field::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: var(--accent);
+      transition: width 350ms cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .field:focus-within::after { width: 100%; }
+    .field input::placeholder,
+    .field textarea::placeholder { color: var(--ink-subtle); font-weight: 400; }
+
+    .btn-form {
+      width: 100%; justify-content: center;
+      padding: 16px 24px; font-size: 15px; font-weight: 700;
+      letter-spacing: 0.01em; border-radius: var(--radius-sm);
+      background: var(--accent); color: #fff; border: none;
+      cursor: pointer; font-family: inherit;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: 0 4px 24px rgba(16,185,129,0.25);
+      transition: background 300ms ease, transform 300ms ease, box-shadow 300ms ease;
+    }
+    .btn-form:hover {
+      background: var(--accent-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(16,185,129,0.35);
+    }
+    .btn-form:active { transform: translateY(0); }
+    .btn-form svg { transition: transform 300ms ease; }
+    .btn-form:hover svg { transform: translateX(4px); }
+    @media (max-width: 900px) {
+      .consult-inner { grid-template-columns: 1fr; gap: 48px; }
+    }
+    @media (max-width: 560px) {
+      .form-row { grid-template-columns: 1fr; gap: 28px; }
+    }
+
+    /* ── CTA BAND ── */
+    .cta-band { background: var(--ink); padding: 96px 0; }
+    .cta-band-inner { text-align: center; }
+    .cta-band h2 {
+      font-size: clamp(30px, 4vw, 48px); font-weight: 800;
+      letter-spacing: -0.03em; color: #fff; margin-bottom: 16px;
+    }
+    .cta-band p { font-size: 17px; color: rgba(255,255,255,0.55); margin-bottom: 40px; }
+    .cta-band-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-invert {
+      background: #fff; color: var(--ink); font-size: 15px; padding: 13px 28px;
+    }
+    .btn-invert:hover { background: #F1F5F9; box-shadow: 0 4px 20px rgba(0,0,0,0.2); transform: translateY(-1px); }
+    .btn-outline-white {
+      background: transparent; color: rgba(255,255,255,0.8);
+      border: 1.5px solid rgba(255,255,255,0.2); font-size: 15px; padding: 13px 28px;
+    }
+    .btn-outline-white:hover { border-color: rgba(255,255,255,0.5); color: #fff; background: rgba(255,255,255,0.06); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer { background: #080F1C; color: rgba(255,255,255,0.55); padding: 64px 0 32px; }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 56px;
+    }
+    .footer-brand .nav-logo { color: #fff; margin-bottom: 16px; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; max-width: 260px; }
+    .footer-contact { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; }
+    .footer-contact a {
+      font-size: 12px; color: rgba(255,255,255,0.4);
+      text-decoration: none; display: flex; align-items: center; gap: 8px;
+      transition: color var(--transition);
+    }
+    .footer-contact a:hover { color: var(--accent); }
+    .footer-col h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a {
+      font-size: 13px; color: rgba(255,255,255,0.5);
+      text-decoration: none; transition: color var(--transition);
+    }
+    .footer-col ul a:hover { color: #fff; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 28px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-size: 12px; }
+    .footer-bottom-links { display: flex; gap: 20px; }
+    .footer-bottom-links a {
+      font-size: 12px; color: rgba(255,255,255,0.3); text-decoration: none;
+      transition: color var(--transition);
+    }
+    .footer-bottom-links a:hover { color: rgba(255,255,255,0.7); }
+
+    /* ── HAMBURGER / MOBILE NAV ── */
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 6px; }
+    .nav-toggle svg { color: var(--ink); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .about-inner { grid-template-columns: 1fr; gap: 48px; }
+      .about-card-float { position: relative; bottom: auto; right: auto; margin-top: 20px; display: inline-flex; gap: 16px; align-items: center; }
+      .stats-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links, .nav-cta { display: none; }
+      .nav-toggle { display: block; }
+      .hero { padding: 120px 0 72px; }
+      .hero-ctas { flex-direction: column; align-items: center; }
+      .trust-row { gap: 16px; }
+      .trust-divider { display: none; }
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      section { padding: 64px 0; }
+    }
+    @media (max-width: 480px) {
+      .stat-item { padding: 36px 24px; }
+      .about-card-main { padding: 24px; }
+    }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1), transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+    .fade-up:nth-child(2) { transition-delay: 0.08s; }
+    .fade-up:nth-child(3) { transition-delay: 0.16s; }
+    .fade-up:nth-child(4) { transition-delay: 0.24s; }
+    .fade-up:nth-child(5) { transition-delay: 0.32s; }
+    .fade-up:nth-child(6) { transition-delay: 0.40s; }
+
+    /* ── KEYFRAMES ── */
+    @keyframes heroIn {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes navLinkIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes logoIn {
+      from { opacity: 0; transform: translateX(-12px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes barGrow {
+      from { width: 0; }
+    }
+    @keyframes progressRun {
+      from { width: 0%; }
+      to   { width: 100%; }
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.55; }
+    }
+
+    /* ── NAV ENTRANCE ── */
+    .nav-logo img { animation: logoIn 500ms cubic-bezier(0.4, 0, 0.2, 1) 80ms both; }
+    .nav-links li { animation: navLinkIn 400ms cubic-bezier(0.4, 0, 0.2, 1) both; }
+    .nav-links li:nth-child(1) { animation-delay: 140ms; }
+    .nav-links li:nth-child(2) { animation-delay: 210ms; }
+    .nav-links li:nth-child(3) { animation-delay: 280ms; }
+    .nav-links li:nth-child(4) { animation-delay: 350ms; }
+    .nav-cta { animation: navLinkIn 400ms cubic-bezier(0.4, 0, 0.2, 1) 420ms both; }
+
+    /* ── NAV LINK UNDERLINE ── */
+    .nav-links a { position: relative; overflow: hidden; }
+    .nav-links a::after {
+      content: '';
+      position: absolute; bottom: 4px; left: 14px; right: 14px;
+      height: 1.5px; background: var(--accent);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
+      border-radius: 2px;
+    }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-links a:hover { background: transparent; }
+
+    /* ── HERO ENTRANCE ── */
+    .hero-eyebrow { animation: heroIn 700ms cubic-bezier(0.4, 0, 0.2, 1) 180ms both; }
+    .hero h1      { animation: heroIn 700ms cubic-bezier(0.4, 0, 0.2, 1) 320ms both; }
+    .hero p       { animation: heroIn 700ms cubic-bezier(0.4, 0, 0.2, 1) 460ms both; }
+    .hero-ctas    { animation: heroIn 700ms cubic-bezier(0.4, 0, 0.2, 1) 580ms both; }
+    .trust-row    { animation: heroIn 700ms cubic-bezier(0.4, 0, 0.2, 1) 720ms both; }
+
+    /* ── EXPERTISE BAR (animated via JS) ── */
+    .expertise-bar {
+      width: 0 !important;
+      transition: width 1.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .expertise-bar.bar-animated { width: var(--bar-w) !important; }
+
+    /* ── SLIDER PROGRESS ── */
+    .slider-progress {
+      height: 2px; background: var(--border);
+      border-radius: 2px; margin-top: 28px; overflow: hidden;
+    }
+    .slider-progress-fill {
+      height: 100%; background: var(--accent);
+      border-radius: 2px; width: 0;
+    }
+    .slider-progress-fill.running {
+      animation: progressRun 5000ms linear forwards;
+    }
+
+    /* ── TESTIMONIAL CARD POP ── */
+    .testimonial-card {
+      transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 300ms ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* ── PROCESS STEP HOVER (homepage stat items too) ── */
+    .stat-item {
+      transition: background var(--transition), transform var(--transition);
+    }
+    .stat-item:hover { transform: scale(1.02); }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     NAVIGATION
+══════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="logo.png" alt="UMCO — Chartered Accountants" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#stats">Results</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="mailto:info@umcoca.com" class="btn btn-primary nav-cta">Book Consultation</a>
+    <button class="nav-toggle" aria-label="Toggle menu">
+      <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=1600&q=85&fit=crop" alt="" aria-hidden="true" />
+    <div class="hero-bg-overlay"></div>
+  </div>
+  <div class="container">
+    <div class="hero-eyebrow">
+      <span class="badge">
+        <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><circle cx="5" cy="5" r="5"/></svg>
+        Pakistan's Leading Financial Consultancy
+      </span>
+    </div>
+    <h1>Financial clarity,<br/><em>engineered for growth.</em></h1>
+    <p>UMCO helps businesses navigate complex tax landscapes, regulatory requirements, and financial strategy — so you can focus on scaling.</p>
+    <div class="hero-ctas">
+      <a href="mailto:info@umcoca.com" class="btn btn-primary">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        Schedule Strategy Call
+      </a>
+      <a href="#services" class="btn btn-secondary">View Services</a>
+    </div>
+    <div class="trust-row">
+      <div class="trust-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        ICAP Registered Firm
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+        500+ Businesses Served
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        15+ Years of Expertise
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+        Karachi & Nationwide
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SERVICES
+══════════════════════════════════════ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="services-header">
+      <div class="section-label">What We Do</div>
+      <h2 class="section-heading">End-to-end financial services, under one roof.</h2>
+      <p class="section-sub">From rigorous audits to digital transformation, UMCO delivers integrated solutions that move the needle for your business.</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card fade-up">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop" alt="Audit and Assurance" loading="lazy" />
+          <div class="service-img-overlay"></div>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/></svg>
+          </div>
+          <h3>Audit & Assurance</h3>
+          <p>Independent, rigorous audits that build stakeholder confidence. We deliver accurate financial reporting with full regulatory compliance.</p>
+          <a href="services/audit-assurance.html" class="service-link">
+            Learn more
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=80&fit=crop" alt="Tax Consulting" loading="lazy" />
+          <div class="service-img-overlay"></div>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3>Tax Consulting</h3>
+          <p>Strategic direct and indirect tax advisory that minimizes liability, ensures compliance with FBR regulations, and positions you for sustainable growth.</p>
+          <a href="services/tax-consulting.html" class="service-link">
+            Learn more
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80&fit=crop" alt="Management Consulting" loading="lazy" />
+          <div class="service-img-overlay"></div>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          </div>
+          <h3>Management Consulting</h3>
+          <p>Data-driven strategy and operational consulting that translates complex financial information into actionable insights for leadership teams.</p>
+          <a href="services/management-consulting.html" class="service-link">
+            Learn more
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&fit=crop" alt="Financial Advisory" loading="lazy" />
+          <div class="service-img-overlay"></div>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h3>Financial Advisory</h3>
+          <p>From mergers and acquisitions to wealth structuring, our advisors guide high-stakes financial decisions with precision and discretion.</p>
+          <a href="services/financial-advisory.html" class="service-link">
+            Learn more
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80&fit=crop" alt="Business Process Outsourcing" loading="lazy" />
+          <div class="service-img-overlay"></div>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3>Business Process Outsourcing</h3>
+          <p>Streamline your back-office operations. We handle bookkeeping, payroll, and financial reporting so your team stays focused on core business.</p>
+          <a href="services/bpo.html" class="service-link">
+            Learn more
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80&fit=crop" alt="Digital Consulting" loading="lazy" />
+          <div class="service-img-overlay"></div>
+        </div>
+        <div class="service-body">
+          <div class="service-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          </div>
+          <h3>Digital Consulting</h3>
+          <p>Future-proof your finance function. We lead digital transformation initiatives — from ERP implementation to analytics infrastructure.</p>
+          <a href="services/digital-consulting.html" class="service-link">
+            Learn more
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     STATS
+══════════════════════════════════════ -->
+<section class="stats" id="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number" data-target="500+">500+</div>
+        <div class="stat-label">Businesses Served</div>
+        <div class="stat-desc">Across industries nationwide</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="15+">15+</div>
+        <div class="stat-label">Years of Excellence</div>
+        <div class="stat-desc">Proven track record since inception</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number" data-target="98%">98%</div>
+        <div class="stat-label">Client Retention Rate</div>
+        <div class="stat-desc">Built on trust and results</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     ABOUT
+══════════════════════════════════════ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-inner">
+      <div class="about-content">
+        <div class="section-label">About UMCO</div>
+        <h2 class="section-heading">Where expertise meets innovation.</h2>
+        <p class="section-sub">
+          Umair Manzoor & Co. is a professional services organization built on a commitment to converting complex financial information into clear, actionable strategy. Our team of chartered accountants brings global perspective and collaborative culture to every engagement.
+        </p>
+        <div class="about-pillars">
+          <div class="pillar">
+            <div class="pillar-dot"></div>
+            <div>
+              <h4>Creative Problem Solving</h4>
+              <p>We don't apply generic frameworks. Every client challenge gets a custom-built solution from our team of innovative professionals.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-dot"></div>
+            <div>
+              <h4>Technology-Forward Methodology</h4>
+              <p>We leverage modern tools and data analytics to deliver insights faster and with greater accuracy than traditional approaches.</p>
+            </div>
+          </div>
+          <div class="pillar">
+            <div class="pillar-dot"></div>
+            <div>
+              <h4>Stakeholder-Centric Collaboration</h4>
+              <p>We take time to deeply understand your business before recommending solutions, ensuring alignment at every decision point.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <div class="about-card-main">
+          <h3>Areas of Deep Expertise</h3>
+          <div class="expertise-list">
+            <div class="expertise-item">
+              <span class="expertise-label">Tax Strategy</span>
+              <div class="expertise-bar-wrap"><div class="expertise-bar" data-w="92%"></div></div>
+            </div>
+            <div class="expertise-item">
+              <span class="expertise-label">Audit & Assurance</span>
+              <div class="expertise-bar-wrap"><div class="expertise-bar" data-w="88%"></div></div>
+            </div>
+            <div class="expertise-item">
+              <span class="expertise-label">Financial Advisory</span>
+              <div class="expertise-bar-wrap"><div class="expertise-bar" data-w="85%"></div></div>
+            </div>
+            <div class="expertise-item">
+              <span class="expertise-label">Digital Transformation</span>
+              <div class="expertise-bar-wrap"><div class="expertise-bar" data-w="78%"></div></div>
+            </div>
+            <div class="expertise-item">
+              <span class="expertise-label">Management Consulting</span>
+              <div class="expertise-bar-wrap"><div class="expertise-bar" data-w="82%"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-card-float">
+          <div class="num">DHA</div>
+          <div class="lbl">Phase 7, Karachi</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TESTIMONIAL SLIDER
+══════════════════════════════════════ -->
+<section class="testimonial">
+  <div class="container">
+    <div class="testimonial-header">
+      <div class="section-label">Client Stories</div>
+      <h2 class="section-heading">Trusted by businesses across Pakistan.</h2>
+    </div>
+
+    <div class="slider-viewport">
+      <div class="slider-track" id="sliderTrack">
+
+        <!-- Slide 1 -->
+        <div class="slide">
+          <div class="testimonial-card">
+            <div class="stars">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">The project went live in time for a series of important meetings in the nation's capital. UMCO's team delivered exactly what we needed, when we needed it.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">RG</div>
+              <div>
+                <div class="author-name">Richard Garrett</div>
+                <div class="author-role">Managing Director, Gridsome</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide">
+          <div class="testimonial-card">
+            <div class="stars">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">UMCO restructured our entire tax strategy and helped us save significantly on our annual liability. Their knowledge of FBR regulations is unmatched. I'd recommend them to any serious business owner.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">SA</div>
+              <div>
+                <div class="author-name">Sana Amir</div>
+                <div class="author-role">CEO, Amir Textile Group, Karachi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide">
+          <div class="testimonial-card">
+            <div class="stars">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">We engaged UMCO for our annual audit and were impressed by how thoroughly they documented our processes. Their report gave our board complete confidence in our financials going into the new fiscal year.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">FK</div>
+              <div>
+                <div class="author-name">Faisal Khan</div>
+                <div class="author-role">CFO, Nexus Logistics, Lahore</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide">
+          <div class="testimonial-card">
+            <div class="stars">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">Outsourcing our BPO operations to UMCO was one of the best decisions we made as a startup. Our bookkeeping is now spotless, payroll runs on time, and our team can focus entirely on growth.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">MR</div>
+              <div>
+                <div class="author-name">Maria Rehman</div>
+                <div class="author-role">Co-Founder, Stackr Technologies, Karachi</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide">
+          <div class="testimonial-card">
+            <div class="stars">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <span class="quote-mark">"</span>
+            <p class="testimonial-text">UMCO's digital consulting team guided our ERP migration from start to finish. Their structured approach eliminated the chaos we expected and had us live on schedule with zero data loss.</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">ZB</div>
+              <div>
+                <div class="author-name">Zaid Baig</div>
+                <div class="author-role">Head of Operations, OmniRetail Pvt. Ltd.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /slider-track -->
+    </div><!-- /slider-viewport -->
+
+    <div class="slider-controls">
+      <button class="slider-btn" id="prevBtn" aria-label="Previous">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <div class="slider-dots" id="sliderDots"></div>
+      <button class="slider-btn" id="nextBtn" aria-label="Next">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+    <div class="slider-progress"><div class="slider-progress-fill" id="sliderProgress"></div></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CONSULTATION FORM
+══════════════════════════════════════ -->
+<section class="consult" id="contact">
+  <div class="container">
+    <div class="consult-inner">
+
+      <!-- Left: copy -->
+      <div class="consult-left">
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-heading">Let's talk about your business.</h2>
+        <p class="section-sub">Tell us what you're dealing with. A UMCO advisor will respond within one business day — no obligation, no pressure.</p>
+        <div class="consult-perks">
+          <div class="consult-perk">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Response within one business day
+          </div>
+          <div class="consult-perk">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            Completely confidential
+          </div>
+          <div class="consult-perk">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"/></svg>
+            Speak directly with a senior advisor
+          </div>
+          <div class="consult-perk">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+            No obligation, no sales pitch
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <form class="consult-form" onsubmit="handleFormSubmit(event)">
+        <div class="form-row">
+          <div class="field">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="Ahmed" required />
+          </div>
+          <div class="field">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" placeholder="Khan" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="ahmed@company.com" required />
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+92 300 000 0000" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="company">Company / Organisation</label>
+          <input type="text" id="company" name="company" placeholder="Your company name" />
+        </div>
+
+        <div class="field">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service…</option>
+            <option value="audit">Audit & Assurance</option>
+            <option value="tax">Tax Consulting</option>
+            <option value="management">Management Consulting</option>
+            <option value="advisory">Financial Advisory</option>
+            <option value="bpo">Business Process Outsourcing</option>
+            <option value="digital">Digital Consulting</option>
+            <option value="other">Not sure — I need guidance</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">Tell Us About Your Situation</label>
+          <textarea id="message" name="message" placeholder="Briefly describe your challenge or what you're looking to achieve…"></textarea>
+        </div>
+
+        <button type="submit" class="btn-form">
+          Send Request
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA BAND
+══════════════════════════════════════ -->
+<section class="cta-band" id="cta-band">
+  <div class="container">
+    <div class="cta-band-inner">
+      <div class="badge" style="background:rgba(16,185,129,0.15); color:#6EE7B7; margin-bottom:24px;">Ready to get started?</div>
+      <h2>Let's build your financial strategy.</h2>
+      <p>Speak with a UMCO advisor. No obligation, just clarity.</p>
+      <div class="cta-band-btns">
+        <a href="mailto:info@umcoca.com" class="btn btn-invert">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Email Us
+        </a>
+        <a href="https://wa.me/923113110415" target="_blank" rel="noopener" class="btn btn-outline-white">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <img src="logo.png" alt="UMCO" style="height:36px; width:auto; filter: brightness(0) invert(1);" />
+        </a>
+        <p>Pakistan's leading financial consultancy providing audit, tax, advisory, and digital transformation services to businesses of every size.</p>
+        <div class="footer-contact">
+          <a href="tel:+922137120735">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            (92) 21 3712 0735
+          </a>
+          <a href="mailto:info@umcoca.com">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            info@umcoca.com
+          </a>
+          <a href="https://maps.google.com" target="_blank" rel="noopener">
+            <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            DHA Phase 7, Karachi
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Audit & Assurance</a></li>
+          <li><a href="#services">Tax Consulting</a></li>
+          <li><a href="#services">Financial Advisory</a></li>
+          <li><a href="#services">Management Consulting</a></li>
+          <li><a href="#services">BPO</a></li>
+          <li><a href="#services">Digital Consulting</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="https://www.umcoca.com/team">Our Team</a></li>
+          <li><a href="https://www.umcoca.com/clients">Clients</a></li>
+          <li><a href="https://www.umcoca.com/blogs">Resources</a></li>
+          <li><a href="https://www.umcoca.com/careers">Careers</a></li>
+          <li><a href="https://www.umcoca.com/faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <ul>
+          <li><a href="mailto:info@umcoca.com">Send an Email</a></li>
+          <li><a href="https://wa.me/923113110415">WhatsApp</a></li>
+          <li><a href="https://www.umcoca.com/contact">Contact Form</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2024 Umair Manzoor & Co. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+      </div>
+      <p style="font-size:11px; color:rgba(255,255,255,0.2);">Powered by <a href="https://hexura.tech" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.35); text-decoration:none; transition:color 300ms ease;" onmouseover="this.style.color='#10B981'" onmouseout="this.style.color='rgba(255,255,255,0.35)'">hexura.tech</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Form submit ──
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.btn-form');
+    btn.innerHTML = `<svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> Request Sent — We'll be in touch soon.`;
+    btn.style.background = 'var(--accent-dark)';
+    btn.disabled = true;
+  }
+
+  // ── Navbar scroll shadow ──
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 16);
+  }, { passive: true });
+
+  // ── Fade-up scroll animations ──
+  const fadeObserver = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); fadeObserver.unobserve(e.target); } }),
+    { threshold: 0.10 }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => fadeObserver.observe(el));
+
+  // ── Expertise bars animate on scroll ──
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.expertise-bar').forEach((bar, i) => {
+          const target = bar.dataset.w;
+          bar.style.setProperty('--bar-w', target);
+          setTimeout(() => bar.classList.add('bar-animated'), i * 120);
+        });
+        barObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  const aboutVisual = document.querySelector('.about-visual');
+  if (aboutVisual) barObserver.observe(aboutVisual);
+
+  // ── Stat counter animation ──
+  function countUp(el, rawText, duration) {
+    const isPlus = rawText.includes('+');
+    const isPct  = rawText.includes('%');
+    const num    = parseInt(rawText);
+    const start  = performance.now();
+    function tick(now) {
+      const p    = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(num * ease) + (isPlus ? '+' : isPct ? '%' : '');
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const statObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.stat-number').forEach(el => {
+          countUp(el, el.dataset.target, 1600);
+        });
+        statObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.4 });
+  const statsGrid = document.querySelector('.stats-grid');
+  if (statsGrid) statObserver.observe(statsGrid);
+
+  // ── Testimonial Slider ──
+  const track        = document.getElementById('sliderTrack');
+  const slides       = track.querySelectorAll('.slide');
+  const dotsContainer = document.getElementById('sliderDots');
+  const progressFill = document.getElementById('sliderProgress');
+  let current  = 0;
+  let autoTimer;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function startProgress() {
+    progressFill.classList.remove('running');
+    progressFill.style.animation = 'none';
+    void progressFill.offsetWidth; // reflow
+    progressFill.style.animation = '';
+    progressFill.classList.add('running');
+  }
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    startProgress();
+    resetAuto();
+  }
+
+  document.getElementById('prevBtn').addEventListener('click', () => goTo(current - 1));
+  document.getElementById('nextBtn').addEventListener('click', () => goTo(current + 1));
+
+  // Touch/swipe
+  let startX = 0;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
+  });
+
+  // Pause auto on hover
+  const sliderVp = document.querySelector('.slider-viewport');
+  sliderVp.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  sliderVp.addEventListener('mouseleave', () => resetAuto());
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 5000);
+  }
+  startProgress();
+  resetAuto();
+
+  // ── Smooth anchor scrolling with nav offset ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
