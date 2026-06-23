@@ -762,3 +762,107 @@ img { max-width: 100%; display: block; }
   box-shadow: 0 8px 22px rgba(5,11,22,0.3);
 }
 .feat-card.has-img .feat-body h3 { margin-top: 18px; }
+
+/* ── v2.4: About page brand nameplate ── */
+.brand-feature {
+  position: relative;
+  background: linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+  color: #fff;
+  overflow: hidden;
+  border-top: 1px solid rgba(198,163,93,0.18);
+  border-bottom: 1px solid rgba(198,163,93,0.18);
+}
+.brand-feature::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(60% 90% at 82% 18%, rgba(198,163,93,0.16), transparent 60%),
+    radial-gradient(50% 80% at 10% 90%, rgba(198,163,93,0.08), transparent 60%);
+  pointer-events: none;
+}
+.brand-feature .wrap {
+  position: relative;
+  padding: clamp(56px, 8vw, 96px) 0;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.bf-mark {
+  width: clamp(72px, 9vw, 104px); height: auto;
+  filter: brightness(0) invert(1);
+  margin-bottom: 30px;
+}
+.bf-rule { display: flex; align-items: center; gap: 16px; margin-bottom: 22px; }
+.bf-rule span { height: 1px; width: clamp(28px, 6vw, 64px); background: linear-gradient(90deg, transparent, var(--gold)); }
+.bf-rule span:last-child { background: linear-gradient(90deg, var(--gold), transparent); }
+.bf-rule i {
+  font-style: normal; color: var(--gold);
+  letter-spacing: 0.34em; text-transform: uppercase;
+  font-size: 12px; font-weight: 600;
+}
+.brand-feature h2 {
+  font-size: clamp(38px, 7vw, 88px);
+  line-height: 1.02; font-weight: 600; letter-spacing: -0.02em;
+  margin: 0;
+  color: #fff;
+}
+.brand-feature h2 .amp { font-family: 'Instrument Serif', serif; font-style: italic; color: var(--gold); font-weight: 400; letter-spacing: 0; }
+.bf-sub {
+  margin-top: 26px;
+  color: rgba(255,255,255,0.72);
+  font-size: clamp(13px, 1.6vw, 16px);
+  letter-spacing: 0.42em; text-transform: uppercase; font-weight: 500;
+}
+.bf-tag {
+  margin-top: 30px; max-width: 620px;
+  color: rgba(255,255,255,0.78);
+  font-size: clamp(15px, 2vw, 18px); line-height: 1.6; letter-spacing: 0;
+}
+@media (max-width: 560px) {
+  .bf-sub { letter-spacing: 0.28em; }
+}
+
+.brand-feature--top { border-top: none; }
+.brand-feature--top .wrap { padding-top: clamp(120px, 9vw, 168px); }
+
+/* ── Schedule panel (shown until Calendly link is configured) ── */
+.schedule-card {
+  display: flex; align-items: center; gap: clamp(24px, 4vw, 52px);
+  background: linear-gradient(160deg, var(--navy-900) 0%, var(--navy-800) 100%);
+  color: #fff; border-radius: var(--radius);
+  padding: clamp(34px, 5vw, 56px);
+  position: relative; overflow: hidden;
+  border: 1px solid rgba(198,163,93,0.18);
+}
+.schedule-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(55% 90% at 90% 10%, rgba(198,163,93,0.16), transparent 60%);
+  pointer-events: none;
+}
+.sc-icon {
+  flex: none; width: 72px; height: 72px; border-radius: 16px;
+  display: grid; place-items: center;
+  background: rgba(198,163,93,0.14); color: var(--gold);
+  border: 1px solid rgba(198,163,93,0.3);
+}
+.sc-body { position: relative; }
+.sc-body h2 { color: #fff; font-size: clamp(24px, 3.2vw, 36px); }
+.sc-body .kicker { color: var(--gold); }
+.sc-body p { color: rgba(255,255,255,0.74); margin-top: 14px; max-width: 540px; line-height: 1.65; }
+.sc-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.sc-actions .btn-ghost-dark { color: rgba(255,255,255,0.92); border-color: rgba(255,255,255,0.26); background: transparent; }
+.sc-actions .btn-ghost-dark:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.06); }
+@media (max-width: 720px) {
+  .schedule-card { flex-direction: column; align-items: flex-start; text-align: left; }
+}
+
+/* ── Process steps with images (Services "How we engage") ── */
+.process-cell.has-img { padding: 0; display: flex; flex-direction: column; }
+.process-cell.has-img .pc-img { height: 132px; overflow: hidden; position: relative; }
+.process-cell.has-img .pc-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms var(--ease); }
+.process-cell.has-img:hover .pc-img img { transform: scale(1.06); }
+.process-cell.has-img .pc-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,22,40,0.34), transparent 60%); }
+.process-cell.has-img .pc-body { padding: 26px 28px 30px; }
+.process-cell.has-img .pc-img .pc-step {
+  position: absolute; left: 16px; bottom: 12px; z-index: 1;
+  font-style: normal; font-size: 12px; font-weight: 650; letter-spacing: 0.1em;
+  color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}

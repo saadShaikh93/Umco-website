@@ -17,6 +17,7 @@ ICON = {
   "check": '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>',
   "arrow": '<svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>',
   "shield": '<svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>',
+  "calendar": '<svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>',
 }
 
 SERVICES = [
@@ -167,6 +168,15 @@ INSIGHTS = [
    "From manual consolidations to inventory blind spots — when to move up, and how to choose without overbuying."),
 ]
 
+# Calendly scheduling link.
+# Leave CALENDLY_URL empty until the client provides their real Calendly link.
+# When empty, the site shows a branded "request a time" panel instead of a live embed,
+# and the Book Consultation buttons link to the contact page (no broken popup).
+# Once you paste the real link below, the inline scheduler + popup activate automatically.
+CALENDLY_URL = ""
+CALENDLY_READY = CALENDLY_URL.startswith("https://calendly.com/")
+CAL_ATTR = " data-calendly" if CALENDLY_READY else ""
+
 NAV_LINKS = [("services.html","Services"),("industries.html","Industries"),("about.html","About"),
              ("case-studies.html","Case Studies"),("insights.html","Insights"),("contact.html","Contact")]
 
@@ -186,6 +196,8 @@ def head(title, desc, prefix=""):
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;550;600;650;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="{prefix}assets/main.css" />
+  <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" />
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
 </head>
 <body>"""
 
@@ -201,12 +213,12 @@ def navbar(prefix="", active=""):
     <a href="{prefix}index.html" class="brand" aria-label="UMCO home"><img src="{prefix}logo.png" alt="UMCO — Umair Manzoor &amp; Co Chartered Accountants" /></a>
     <nav aria-label="Primary"><ul class="nav-menu">{links}</ul></nav>
     <div class="nav-actions">
-      <a href="{prefix}contact.html" class="btn btn-navy">Book Consultation</a>
+      <a href="{prefix}contact.html" class="btn btn-navy"{CAL_ATTR}>Book Consultation</a>
       <button class="nav-burger" aria-label="Toggle menu" aria-expanded="false"><span></span></button>
     </div>
   </div>
 </header>
-<div class="mobile-menu">{mlinks}<a href="{prefix}careers.html">Careers</a><a href="{prefix}contact.html" class="btn btn-navy">Book Consultation</a></div>"""
+<div class="mobile-menu">{mlinks}<a href="{prefix}careers.html">Careers</a><a href="{prefix}contact.html" class="btn btn-navy"{CAL_ATTR}>Book Consultation</a></div>"""
 
 def footer(prefix=""):
     svc_links = "".join(f'<li><a href="{prefix}services/{s["slug"]}.html">{s["name"]}</a></li>' for s in SERVICES[:6])
@@ -271,7 +283,7 @@ def cta_band(prefix=""):
     <h2>Clarity is one conversation <span class="serif-accent">away.</span></h2>
     <p>Speak with a senior UMCO advisor about your audit, tax, or transformation agenda. No obligation — just a clear view of where you stand.</p>
     <div class="hero-ctas">
-      <a href="{prefix}contact.html" class="btn btn-gold">Book Consultation {ICON["arrow"]}</a>
+      <a href="{prefix}contact.html" class="btn btn-gold"{CAL_ATTR}>Book Consultation {ICON["arrow"]}</a>
       <a href="https://wa.me/923113110415" target="_blank" rel="noopener" class="btn btn-ghost-light">WhatsApp Us</a>
     </div>
   </div>
@@ -293,7 +305,7 @@ def svc_cards(prefix="", limit=8):
 # ── image assets (Unsplash, royalty-free) ──
 IMG = {
   "hero_growth":  "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&q=80&fit=crop",
-  "hero_digital": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80&fit=crop",
+  "hero_digital": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&fit=crop",
   "hero_audit":   "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=1920&q=80&fit=crop",
   "hero_risk":    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80&fit=crop",
   "svc": {
@@ -383,7 +395,7 @@ for i, (tag, img, h1, sub) in enumerate(HERO_SLIDES):
           <h1>{h1}</h1>
           <p>{sub}</p>
           <div class="hero-ctas">
-            <a href="contact.html" class="btn btn-gold">Book Consultation {ICON["arrow"]}</a>
+            <a href="contact.html" class="btn btn-gold"{CAL_ATTR}>Book Consultation {ICON["arrow"]}</a>
             <a href="services.html" class="btn btn-ghost-light">Explore Services</a>
           </div>
         </div>
@@ -422,19 +434,22 @@ indx_cards = "".join(f"""
       </a>""" for name, d, ic in INDUSTRIES)
 
 FEATURES = [
-  ("mgmt","Industry Expertise","Fifteen years across manufacturing, retail, technology, and financial services — we've seen your problem before."),
-  ("audit","Certified Professionals","ICAP and ACCA-qualified teams working to International Standards on Auditing and IFRS."),
-  ("digital","Digital-First Approach","Cloud platforms, automation, and live dashboards are our default — not an upsell."),
-  ("risk","Regulatory Excellence","FBR, SECP, and State Bank requirements handled proactively, before they become findings."),
-  ("bpo","Client-Centric Engagement","A partner leads every engagement and answers within one business day. No handoffs to juniors."),
-  ("advisory","Strategic Advisory","Advice connected to your growth agenda — not just compliance paperwork filed on time."),
+  ("mgmt","Industry Expertise","Fifteen years across manufacturing, retail, technology, and financial services — we've seen your problem before.","photo-1565043666747-69f6646db940"),
+  ("audit","Certified Professionals","ICAP and ACCA-qualified teams working to International Standards on Auditing and IFRS.","photo-1481627834876-b7833e8f5570"),
+  ("digital","Digital-First Approach","Cloud platforms, automation, and live dashboards are our default — not an upsell.","photo-1518770660439-4636190af475"),
+  ("risk","Regulatory Excellence","FBR, SECP, and State Bank requirements handled proactively, before they become findings.","photo-1486406146926-c627a92ad1ab"),
+  ("bpo","Client-Centric Engagement","A partner leads every engagement and answers within one business day. No handoffs to juniors.","photo-1497366216548-37526070297c"),
+  ("advisory","Strategic Advisory","Advice connected to your growth agenda — not just compliance paperwork filed on time.","photo-1460925895917-afdab827c52f"),
 ]
 feat_cards = "".join(f"""
-      <div class="feat-card">
-        <div class="feat-icon">{ICON[ic]}</div>
-        <h3>{t}</h3>
-        <p>{d}</p>
-      </div>""" for ic, t, d in FEATURES)
+      <div class="feat-card has-img">
+        <div class="feat-img"><img src="https://images.unsplash.com/{img}?w=600&q=78&fit=crop" alt="{t} — UMCO" loading="lazy" /></div>
+        <div class="feat-body">
+          <div class="feat-icon">{ICON[ic]}</div>
+          <h3>{t}</h3>
+          <p>{d}</p>
+        </div>
+      </div>""" for ic, t, d, img in FEATURES)
 
 home_cases = "".join(case_card(i, c) for i, c in enumerate(CASES))
 
@@ -608,10 +623,22 @@ page("services.html",
       <h2>A disciplined path from first call to <span class="serif-accent">results.</span></h2>
     </div>
     <div class="process-grid reveal-stagger">
-      <div class="process-cell"><i>STEP 01</i><h4>Discovery</h4><p>A structured conversation to understand your situation, constraints, and what success looks like.</p></div>
-      <div class="process-cell"><i>STEP 02</i><h4>Scoping &amp; Proposal</h4><p>A fixed-fee proposal with named team members, deliverables, and a timeline you can hold us to.</p></div>
-      <div class="process-cell"><i>STEP 03</i><h4>Execution</h4><p>Partner-led delivery with scheduled checkpoints — issues surfaced early, never at the deadline.</p></div>
-      <div class="process-cell"><i>STEP 04</i><h4>Ongoing Counsel</h4><p>Most clients stay. We become the standing advisor your leadership calls before the big decisions.</p></div>
+      <div class="process-cell has-img">
+        <div class="pc-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=78&fit=crop" alt="Discovery meeting space — UMCO" loading="lazy" /><i class="pc-step">STEP 01</i></div>
+        <div class="pc-body"><h4>Discovery</h4><p>A structured conversation to understand your situation, constraints, and what success looks like.</p></div>
+      </div>
+      <div class="process-cell has-img">
+        <div class="pc-img"><img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&q=78&fit=crop" alt="Scoping and proposal documents — UMCO" loading="lazy" /><i class="pc-step">STEP 02</i></div>
+        <div class="pc-body"><h4>Scoping &amp; Proposal</h4><p>A fixed-fee proposal with named team members, deliverables, and a timeline you can hold us to.</p></div>
+      </div>
+      <div class="process-cell has-img">
+        <div class="pc-img"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=78&fit=crop" alt="Execution dashboards — UMCO" loading="lazy" /><i class="pc-step">STEP 03</i></div>
+        <div class="pc-body"><h4>Execution</h4><p>Partner-led delivery with scheduled checkpoints — issues surfaced early, never at the deadline.</p></div>
+      </div>
+      <div class="process-cell has-img">
+        <div class="pc-img"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=78&fit=crop" alt="Ongoing advisory — UMCO" loading="lazy" /><i class="pc-step">STEP 04</i></div>
+        <div class="pc-body"><h4>Ongoing Counsel</h4><p>Most clients stay. We become the standing advisor your leadership calls before the big decisions.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -639,7 +666,7 @@ for s in SERVICES:
     <h1>{s["h1"]}</h1>
     <p class="lede">{s["lede"]}</p>
     <div class="hero-ctas">
-      <a href="../contact.html" class="btn btn-gold">Book Consultation {ICON["arrow"]}</a>
+      <a href="../contact.html" class="btn btn-gold"{CAL_ATTR}>Book Consultation {ICON["arrow"]}</a>
       <a href="https://wa.me/923113110415" target="_blank" rel="noopener" class="btn btn-ghost-light">WhatsApp Us</a>
     </div>
   </div>
@@ -676,11 +703,13 @@ page("about.html",
      "About Us — UMCO Chartered Accountants",
      "The story, values, and standards behind Umair Manzoor & Co Chartered Accountants — partner-led professional services in Karachi, Pakistan.",
      f"""
-<section class="page-hero">
-  <div class="wrap">
-    <div class="crumb"><a href="index.html">Home</a><span>/</span><span>About</span></div>
-    <h1>A firm built on judgement, not <span class="serif-accent">volume.</span></h1>
-    <p class="lede">Umair Manzoor &amp; Co exists for businesses that want international-standard advice with direct access to the people doing the thinking.</p>
+<section class="brand-feature brand-feature--top">
+  <div class="wrap reveal">
+    <img class="bf-mark" src="logo.png" alt="UM monogram" />
+    <div class="bf-rule"><span></span><i>Chartered Accountants</i><span></span></div>
+    <h2>Umair Manzoor <span class="amp">&amp;</span> Co</h2>
+    <div class="bf-sub">Audit &middot; Tax &middot; Advisory &middot; Digital</div>
+    <p class="bf-tag">The name behind every engagement — partner-led assurance and advisory, trusted by businesses across Pakistan and international markets.</p>
   </div>
 </section>
 <section class="section">
@@ -939,6 +968,39 @@ page("careers.html",
 
 # ───────────────────────────── CONTACT ─────────────────────────────
 svc_opts = "".join(f'<option value="{s["slug"]}">{s["name"]}</option>' for s in SERVICES)
+
+if CALENDLY_READY:
+    schedule_block = f"""
+<section class="section" style="padding-top:0;background:var(--paper)" id="schedule">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="kicker">Pick a time</div>
+      <h2>Book a consultation, <span class="serif-accent">instantly.</span></h2>
+      <p>Prefer to skip the form? Choose a slot that suits you and we'll meet by call or video — no back-and-forth.</p>
+    </div>
+    <div class="calendly-inline-widget reveal" data-url="{CALENDLY_URL}?hide_gdpr_banner=1&amp;primary_color=c6a35d" style="min-width:320px;height:680px"></div>
+  </div>
+</section>"""
+else:
+    schedule_block = f"""
+<section class="section" style="padding-top:0" id="schedule">
+  <div class="wrap">
+    <div class="schedule-card reveal">
+      <div class="sc-icon">{ICON["calendar"]}</div>
+      <div class="sc-body">
+        <div class="kicker">Book a consultation</div>
+        <h2>Speak with a senior <span class="serif-accent">advisor.</span></h2>
+        <p>Reach out and we'll confirm a time that works — by phone, WhatsApp, or email. A senior advisor responds within one business day.</p>
+        <div class="sc-actions">
+          <a href="#enquiry" class="btn btn-gold">Book online meeting {ICON["arrow"]}</a>
+          <a href="tel:+922137120735" class="btn btn-ghost-dark">Call (92) 21 3712 0735</a>
+          <a href="https://wa.me/923113110415" target="_blank" rel="noopener" class="btn btn-ghost-dark">WhatsApp us {ICON["arrow"]}</a>
+          <a href="mailto:info@umcoca.com" class="btn btn-ghost-dark">Email info@umcoca.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>"""
 page("contact.html",
      "Contact — Book a Consultation | UMCO Chartered Accountants",
      "Book a consultation with a senior UMCO advisor. Offices in DHA Phase 7, Karachi. Response within one business day.",
@@ -950,7 +1012,7 @@ page("contact.html",
     <p class="lede">Tell us what you're dealing with. A senior advisor — not a sales handler — responds within one business day.</p>
   </div>
 </section>
-<section class="section">
+<section class="section" id="enquiry">
   <div class="wrap detail-grid" style="grid-template-columns:1fr 1.35fr">
     <div class="reveal">
       <div class="kicker">Reach us directly</div>
@@ -988,6 +1050,7 @@ page("contact.html",
     </div>
   </div>
 </section>
+{schedule_block}
 <section class="section-tight" style="padding-top:0">
   <div class="wrap">
     <div class="section-head reveal" style="margin-bottom:0">

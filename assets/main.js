@@ -166,3 +166,18 @@
     }, { passive: true });
   }
 })();
+
+/* ── Calendly popup on Book Consultation buttons ── */
+(function () {
+  'use strict';
+  var URL = 'https://calendly.com/umco-consult/30min';
+  document.querySelectorAll('[data-calendly]').forEach(function (el) {
+    el.addEventListener('click', function (ev) {
+      if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
+        ev.preventDefault();
+        Calendly.initPopupWidget({ url: URL + '?hide_gdpr_banner=1&primary_color=c6a35d' });
+      }
+      // else: fall through to the href (contact.html) as a no-JS fallback
+    });
+  });
+})();
