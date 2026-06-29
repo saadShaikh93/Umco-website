@@ -505,7 +505,7 @@ img { max-width: 100%; display: block; }
 @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.07); } }
 .hs-veil {
   position: absolute; inset: 0;
-  background: linear-gradient(78deg, rgba(5,11,22,0.94) 0%, rgba(10,22,40,0.82) 45%, rgba(10,22,40,0.45) 100%);
+  background: linear-gradient(90deg, rgba(5,11,22,0.70) 0%, rgba(10,22,40,0.28) 38%, rgba(10,22,40,0) 66%);
 }
 .hs-slide { display: flex; }
 .hs-content { position: relative; z-index: 2; width: 100%; display: flex; align-items: center; padding-top: calc(var(--nav-h) + 56px); padding-bottom: 56px; }

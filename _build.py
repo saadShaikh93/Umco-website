@@ -219,7 +219,7 @@ def navbar(prefix="", active=""):
     </div>
   </div>
 </header>
-<div class="mobile-menu">{mlinks}<a href="{prefix}careers.html">Careers</a><a href="{prefix}contact.html" class="btn btn-navy"{CAL_ATTR}>Book Consultation</a></div>"""
+<div class="mobile-menu">{mlinks}<a href="{prefix}careers.html">Careers</a></div>"""
 
 def footer(prefix=""):
     svc_links = "".join(f'<li><a href="{prefix}services/{s["slug"]}.html">{s["name"]}</a></li>' for s in SERVICES[:6])
@@ -307,10 +307,10 @@ def svc_cards(prefix="", limit=8):
 IMG = {
   "hero_growth":  "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1920&q=80&fit=crop",
   "hero_digital": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920&q=80&fit=crop",
-  "hero_audit":   "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=1920&q=80&fit=crop",
+  "hero_audit":   "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&fit=crop",
   "hero_risk":    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1920&q=80&fit=crop",
   "svc": {
-    "audit-assurance":            "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=700&q=78&fit=crop",
+    "audit-assurance":            "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=78&fit=crop",
     "tax-advisory":               "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=700&q=78&fit=crop",
     "risk-advisory":              "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=700&q=78&fit=crop",
     "financial-advisory":         "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=78&fit=crop",
@@ -360,7 +360,7 @@ CASE_METRICS = [
 CASE_IMG = [
   "https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=700&q=78&fit=crop",
   "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=78&fit=crop",
-  "https://images.unsplash.com/photo-1434626881859-194d67b2b86f?w=700&q=78&fit=crop",
+  "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=78&fit=crop",
   "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=700&q=78&fit=crop",
   "https://images.unsplash.com/photo-1497366216548-37526070297c?w=700&q=78&fit=crop",
   "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&q=78&fit=crop",
@@ -396,7 +396,7 @@ for i, (tag, img, h1, sub) in enumerate(HERO_SLIDES):
           <h1>{h1}</h1>
           <p>{sub}</p>
           <div class="hero-ctas">
-            <a href="services.html" class="btn btn-gold">Explore Services {ICON["arrow"]}</a>
+            <a href="services.html" class="btn btn-ghost-light">Explore Services {ICON["arrow"]}</a>
           </div>
         </div>
       </div>
@@ -780,7 +780,6 @@ page("team.html",
         <div class="team-overlay">
           <h3>Umair Manzoor</h3>
           <p>Umair Manzoor is a Fellow Chartered Accountant (FCA) and member of ICAP with over 15 years of experience across Big 4 audit, controllership, and CFO-level roles. He provides audit and assurance, accounting and financial reporting, taxation, and corporate compliance services to businesses across Pakistan — combining deep technical expertise in IFRS with the practical insight of someone who has led finance functions from the inside. He offers the rigour of Big 4 experience with the personal attention of a dedicated partner.</p>
-          <a class="text-link" href="https://www.linkedin.com/company/umcoca" target="_blank" rel="noopener">Connect on LinkedIn {ICON["arrow"]}</a>
         </div>
       </div>
       <div class="team-card" tabindex="0">
@@ -1062,7 +1061,7 @@ page("contact.html",
       <h2>Umair Manzoor &amp; Co. Chartered Accountants, <span class="serif-accent">Shaheed e Millat Road.</span></h2>
     </div>
     <div class="map-shell reveal">
-      <iframe title="Umair Manzoor &amp; Co Chartered Accountants — office location" src="https://www.google.com/maps?q=Umair+Manzoor+%26+Co+Chartered+Accountants,+Karachi&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <iframe title="Umair Manzoor &amp; Co Chartered Accountants — office location" src="https://maps.google.com/maps?q=24.877978,67.0669268&z=17&hl=en&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </div>
   </div>
 </section>""",
