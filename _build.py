@@ -497,7 +497,7 @@ HOME = f"""
   </div>
 </div>
 
-<section class="section" id="services">
+<section class="section" id="services" style="padding-top:60px">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="kicker">What we do</div>
@@ -792,13 +792,6 @@ page("team.html",
           <h3>Zaid Abid</h3>
           <p>Zaid Abid is a Fellow Chartered Accountant with over 15 years professional experience across audit, finance, taxation, corporate compliance, and advisory services. He has previously worked with Deloitte, Cherat, and Mustaqim, bringing a blend of professional practice and industry experience to the firm's client engagements.</p>
         </div>
-      </div>
-      <div class="team-card">
-        <div class="team-avatar">{ICON["advisory"]}</div>
-        <h3>Advisory &amp; Digital Practice</h3>
-        <div class="team-role">Practice Leadership</div>
-        <p class="team-bio">Transaction, consulting, and technology specialists who lead due diligence, valuations, ERP implementations, and finance-function transformation programmes.</p>
-        <div class="team-creds"><span>M&amp;A</span><span>Valuations</span><span>ERP</span></div>
       </div>
     </div>
     <p class="reveal" style="margin-top:36px; font-size:14px; color:var(--ink-faint)">Full team profiles are shared during engagement scoping — you'll know exactly who is on your file before you sign.</p>

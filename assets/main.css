@@ -489,7 +489,7 @@ img { max-width: 100%; display: block; }
 ═════════════════════════════════════════════════════════ */
 
 /* ── HERO SLIDER ── */
-.hs { position: relative; min-height: 92vh; background: var(--navy-950); color: #fff; overflow: hidden; display: flex; flex-direction: column; }
+.hs { position: relative; min-height: 78vh; background: var(--navy-950); color: #fff; overflow: hidden; display: flex; flex-direction: column; }
 .hs-slide {
   position: absolute; inset: 0; opacity: 0; visibility: hidden;
   transition: opacity 1100ms var(--ease), visibility 0s 1100ms;
