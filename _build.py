@@ -34,12 +34,13 @@ SERVICES = [
        related=["tax-advisory","risk-advisory","corporate-advisory"]),
   dict(slug="tax-advisory", icon="tax", name="Tax Advisory",
        short="Proactive direct and indirect tax strategy — FBR compliance, provincial sales tax, and cross-border structuring.",
-       h1='Pay what you owe. <span class="serif-accent">Not a rupee more.</span>',
+       h1='Tax advice that keeps you compliant, efficient, and <span class="serif-accent">prepared.</span>',
        lede="Corporate tax planning, sales tax compliance, and dispute representation across FBR, SRB, PRA, and KPRA — handled end to end.",
-       overview=["Pakistan's tax landscape changes with every Finance Act, and the cost of getting it wrong compounds quickly. Our tax team plans across the full year — not just at filing time — to legally minimise liability while keeping you fully compliant with federal and provincial authorities.",
-                 "From withholding regimes to double-tax treaties, we cover the complete spectrum of direct and indirect taxation for domestic groups and foreign investors entering Pakistan."],
+       overview=["Pakistan's tax landscape changes with every Finance Act, and the cost of getting it wrong compounds quickly. Our tax team plans across the full year — not just at filing time — to legally minimise tax exposure while keeping you fully compliant with federal and provincial tax authorities.",
+                 "From withholding tax regimes, income tax, sales tax, double-tax treaties, and provincial sales tax on services, we cover the complete spectrum of direct and indirect taxation for domestic groups and foreign investors entering Pakistan.",
+                 "Our services include tax advisory, registration, compliance, return filing, audit support, and representation before the Federal Board of Revenue (FBR) and provincial revenue authorities, including SRB, PRA, KPRA, and BRA."],
        offers=[("Corporate Tax Planning & Compliance","Return preparation, withholding compliance, and year-round structuring advice."),
-               ("Sales Tax & Indirect Tax","Registration, monthly filings, input-credit optimisation, and refunds across FBR and provincial authorities."),
+               ("Federal and Provincial Sales Tax","Registration, monthly filings, input tax credit optimisation, refund claims, audit assistance, and compliance support before FBR and provincial revenue authorities including SRB, PRA, KPRA, and BRA."),
                ("Tax Disputes & Representation","Audit defence, appeals, and ADR representation before commissioners and tribunals."),
                ("International & Treaty Tax","Transfer pricing documentation, permanent-establishment analysis, and repatriation planning.")],
        related=["audit-assurance","corporate-advisory","financial-advisory"]),
@@ -66,7 +67,7 @@ SERVICES = [
                ("Family Business & Succession","Governance structures and transition planning for founder-led groups.")],
        related=["financial-advisory","digital-transformation","bpo_rel"]),
   dict(slug="business-process-outsourcing", icon="bpo", name="Business Process Outsourcing",
-       short="Your finance back office — bookkeeping, payroll, and reporting — run by chartered accountants, not clerks.",
+       short="Your finance back office, managed by qualified professionals with partner-level oversight.",
        h1='Your back office, run to <span class="serif-accent">audit standard.</span>',
        lede="Accounting, payroll, and management reporting delivered as a managed service — accurate, on time, every month.",
        overview=["Hiring, training, and retaining a finance team is expensive — and a single departure can stall your month-end close. UMCO's outsourcing practice gives you a complete finance function staffed by qualified professionals, at a fraction of the in-house cost.",
@@ -91,10 +92,10 @@ SERVICES = [
        short="Enterprise risk, internal controls, and regulatory compliance frameworks that protect value before it's lost.",
        h1='See risk clearly. <span class="serif-accent">Act before it costs you.</span>',
        lede="Enterprise risk frameworks, internal-control design, and compliance programmes built for Pakistan's regulatory reality.",
-       overview=["Risk management is cheapest before the loss event. UMCO's risk practice helps boards and audit committees understand their true exposure — financial, operational, regulatory — and build proportionate controls that protect value without strangling the business.",
-                 "We design frameworks aligned to COSO and ISO 31000, then make them operational: tested, owned, and reported."],
+       overview=["Effective risk management protects business value before issues turn into losses. UMCO helps management, boards, and audit committees understand financial, operational, regulatory, and compliance risks, and implement practical controls that support governance without slowing business operations.",
+                 "We design risk management frameworks, internal controls, SOPs, and reporting mechanisms aligned with COSO and ISO 31000, ensuring they are tested, owned, monitored, and embedded into daily operations."],
        offers=[("Enterprise Risk Management","Risk registers, appetite statements, and board-level reporting frameworks."),
-               ("Internal Controls (ICFR)","Design, documentation, and testing of controls over financial reporting."),
+               ("Internal Controls & SOPs","Design and review of policies, procedures, approval matrices, and control activities."),
                ("Regulatory Compliance","AML/CFT programmes, SECP code-of-governance compliance, and remediation."),
                ("Fraud Risk & Forensics","Fraud-risk assessments, investigations, and dispute support.")],
        related=["audit-assurance","corporate-advisory","management-consulting"]),
@@ -102,10 +103,10 @@ SERVICES = [
        short="Company formation, SECP compliance, and corporate secretarial services — especially for foreign entrants to Pakistan.",
        h1='Enter and operate in Pakistan <span class="serif-accent">with confidence.</span>',
        lede="Entity structuring, SECP and State Bank compliance, and ongoing corporate secretarial support for local and foreign investors.",
-       overview=["For international investors, Pakistan's corporate and exchange-control regime is navigable — with the right local counsel. UMCO acts as the single point of contact for market entry: entity selection, registration, repatriation structuring, and every ongoing filing.",
-                 "Domestic groups rely on the same practice for restructurings, share transactions, and clean corporate housekeeping that survives due diligence."],
+       overview=["UMCO provides corporate advisory support to foreign investors and domestic groups for business setup, company registration, restructuring, share transactions, regulatory filings, and ongoing corporate compliance in Pakistan.",
+                 "Our team assists with SECP, FBR, SBP, BOI, and other regulatory matters, ensuring that corporate records and filings remain accurate, compliant, and ready for audit, financing, or due diligence."],
        offers=[("Market Entry & Company Formation","Entity selection, SECP incorporation, branch/liaison office registration with BOI."),
-               ("Corporate Secretarial","Statutory registers, board support, and all SECP filings managed year-round."),
+               ("SECP Compliance & Filings","Annual returns, statutory forms, changes in directors, shareholding, and registered office."),
                ("Foreign Exchange & Repatriation","State Bank approvals, dividend repatriation, and FE manual compliance."),
                ("Group Restructuring","Mergers, schemes of arrangement, and share-capital transactions.")],
        related=["tax-advisory","financial-advisory","audit-assurance"]),
@@ -118,7 +119,7 @@ SVC = {s["slug"]: s for s in SERVICES}
 INDUSTRIES = [
   ("Manufacturing", "Cost accounting, export-rebate optimisation, and audit for textile, pharma, and engineering producers.", "audit"),
   ("Retail & Consumer", "Multi-location controls, POS-integrated accounting, and indirect-tax compliance at scale.", "bpo"),
-  ("Technology & Startups", "Investor-ready financials, ESOP structuring, and tax positions built for venture diligence.", "digital"),
+  ("Technology & Startups", "Financial reporting, tax advisory, regulatory compliance, and investor due diligence support for startups and technology companies.", "digital"),
   ("Healthcare", "Regulatory compliance, donor-funded programme audits, and cost-per-outcome reporting.", "risk"),
   ("Education", "Trust and not-for-profit structures, fee-revenue assurance, and governance frameworks.", "corp"),
   ("Financial Services", "Prudential reporting, AML/CFT programmes, and SBP/SECP regulatory liaison.", "advisory"),
@@ -178,7 +179,7 @@ CALENDLY_READY = CALENDLY_URL.startswith("https://calendly.com/")
 CAL_ATTR = " data-calendly" if CALENDLY_READY else ""
 
 NAV_LINKS = [("services.html","Services"),("industries.html","Industries"),("about.html","About"),
-             ("case-studies.html","Case Studies"),("insights.html","Insights"),("contact.html","Contact")]
+             ("case-studies.html","Case Studies"),("insights.html","Insights")]
 
 def head(title, desc, prefix=""):
     return f"""<!DOCTYPE html>
@@ -228,7 +229,7 @@ def footer(prefix=""):
     <div class="footer-grid">
       <div>
         <a href="{prefix}index.html" class="brand"><img src="{prefix}logo.png" alt="UMCO" /></a>
-        <p class="footer-about">Umair Manzoor &amp; Co Chartered Accountants — audit, tax, advisory, and digital consulting for businesses operating in and entering Pakistan.</p>
+        <p class="footer-about">Umair Manzoor &amp; Co Chartered Accountants — providing audit, tax, advisory, outsourcing, and digital consulting services to businesses operating in Pakistan and abroad.</p>
       </div>
       <div>
         <h4>Services</h4>
@@ -248,10 +249,10 @@ def footer(prefix=""):
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="mailto:info@umcoca.com">info@umcoca.com</a></li>
+          <li><a href="mailto:info@umairmanzoor.com">info@umairmanzoor.com</a></li>
           <li><a href="tel:+922137120735">(92) 21 3712 0735</a></li>
-          <li><a href="https://wa.me/923113110415" rel="noopener" target="_blank">WhatsApp</a></li>
-          <li><a href="{prefix}contact.html">DHA Phase 7, Karachi</a></li>
+          <li><a href="https://wa.me/923106569999" rel="noopener" target="_blank">WhatsApp</a></li>
+          <li><a href="{prefix}contact.html">Shayan Iconic Tower, Karachi</a></li>
         </ul>
       </div>
     </div>
@@ -284,7 +285,7 @@ def cta_band(prefix=""):
     <p>Speak with a senior UMCO advisor about your audit, tax, or transformation agenda. No obligation — just a clear view of where you stand.</p>
     <div class="hero-ctas">
       <a href="{prefix}contact.html" class="btn btn-gold"{CAL_ATTR}>Book Consultation {ICON["arrow"]}</a>
-      <a href="https://wa.me/923113110415" target="_blank" rel="noopener" class="btn btn-ghost-light">WhatsApp Us</a>
+      <a href="https://wa.me/923106569999" target="_blank" rel="noopener" class="btn btn-ghost-light">WhatsApp Us</a>
     </div>
   </div>
 </section>"""
@@ -395,8 +396,7 @@ for i, (tag, img, h1, sub) in enumerate(HERO_SLIDES):
           <h1>{h1}</h1>
           <p>{sub}</p>
           <div class="hero-ctas">
-            <a href="contact.html" class="btn btn-gold"{CAL_ATTR}>Book Consultation {ICON["arrow"]}</a>
-            <a href="services.html" class="btn btn-ghost-light">Explore Services</a>
+            <a href="services.html" class="btn btn-gold">Explore Services {ICON["arrow"]}</a>
           </div>
         </div>
       </div>
@@ -491,8 +491,8 @@ HOME = f"""
     <div class="trust-items">
       <span class="trust-item">{ICON["shield"]} ICAP Registered Firm</span>
       <span class="trust-item">{ICON["shield"]} ACCA-Qualified Team</span>
-      <span class="trust-item">{ICON["shield"]} International Standards on Auditing</span>
-      <span class="trust-item">{ICON["shield"]} IFRS Reporting Expertise</span>
+      <span class="trust-item">{ICON["shield"]} SECP Registered Intermediary</span>
+      <span class="trust-item">{ICON["shield"]} ICAP Approved Trainee Organization</span>
     </div>
   </div>
 </div>
@@ -667,7 +667,7 @@ for s in SERVICES:
     <p class="lede">{s["lede"]}</p>
     <div class="hero-ctas">
       <a href="../contact.html" class="btn btn-gold"{CAL_ATTR}>Book Consultation {ICON["arrow"]}</a>
-      <a href="https://wa.me/923113110415" target="_blank" rel="noopener" class="btn btn-ghost-light">WhatsApp Us</a>
+      <a href="https://wa.me/923106569999" target="_blank" rel="noopener" class="btn btn-ghost-light">WhatsApp Us</a>
     </div>
   </div>
 </section>
@@ -717,8 +717,8 @@ page("about.html",
     <div class="split-body reveal">
       <div class="kicker">Our story</div>
       <h2 style="font-size:clamp(26px,3.4vw,40px)">Why we <span class="serif-accent">started.</span></h2>
-      <p>UMCO was founded in Karachi on a frustration familiar to anyone who has bought professional services in Pakistan: the partner who pitched the engagement disappears the day it is signed. We built the opposite — a firm where a chartered accountant with real authority stays on your file from first meeting to final deliverable.</p>
-      <p>Today the practice serves more than 500 businesses, from founder-led SMEs to subsidiaries of international groups, across audit, tax, advisory, outsourcing, and digital transformation.</p>
+      <p>UMCO was founded in Karachi with a clear purpose: to deliver professional services with direct partner involvement, technical quality, and consistent attention from the first meeting to the final deliverable. We built the firm around a simple principle — senior professionals should remain actively involved throughout every engagement, ensuring that each assignment is handled with care, accountability, and practical insight.</p>
+      <p>Today, the practice has served more than 100 businesses across Pakistan, Saudi Arabia, and Canada, including founder-led SMEs, subsidiaries of international groups, and clients requiring audit, tax, review, compilation, Local Content Audit, agreed-upon procedures, advisory, outsourcing, and digital transformation support.</p>
     </div>
     <div class="figure-panel reveal">
       <h3>What we hold ourselves to</h3>
@@ -774,21 +774,25 @@ page("team.html",
       <div class="team-card" tabindex="0">
         <div class="team-avatar">UM</div>
         <h3>Umair Manzoor</h3>
-        <div class="team-role">Founder &amp; Managing Partner</div>
-        <p class="team-bio">Chartered accountant with over 15 years across audit, taxation, and corporate advisory. Umair leads the firm's most complex engagements and personally oversees quality across every practice.</p>
-        <div class="team-creds"><span>FCA — ICAP</span><span>Audit &amp; Tax</span></div>
+        <div class="team-role">Founder &amp; Managing Partner — FCA, CPA (USA)</div>
+        <p class="team-bio">Fellow Chartered Accountant (FCA) and ICAP member with over 15 years across Big 4 audit, controllership, and CFO-level roles — providing audit and assurance, financial reporting, taxation, and corporate compliance with deep IFRS expertise.</p>
+        <div class="team-creds"><span>FCA — ICAP</span><span>CPA (USA)</span><span>Audit, Tax &amp; Advisory</span></div>
         <div class="team-overlay">
           <h3>Umair Manzoor</h3>
-          <p>Founded UMCO on the conviction that clients deserve the partner in the room — not just on the letterhead. Advises boards and owners on their most consequential audit, tax, and transaction decisions.</p>
+          <p>Umair Manzoor is a Fellow Chartered Accountant (FCA) and member of ICAP with over 15 years of experience across Big 4 audit, controllership, and CFO-level roles. He provides audit and assurance, accounting and financial reporting, taxation, and corporate compliance services to businesses across Pakistan — combining deep technical expertise in IFRS with the practical insight of someone who has led finance functions from the inside. He offers the rigour of Big 4 experience with the personal attention of a dedicated partner.</p>
           <a class="text-link" href="https://www.linkedin.com/company/umcoca" target="_blank" rel="noopener">Connect on LinkedIn {ICON["arrow"]}</a>
         </div>
       </div>
-      <div class="team-card">
-        <div class="team-avatar">{ICON["tax"]}</div>
-        <h3>Tax &amp; Compliance Practice</h3>
-        <div class="team-role">Practice Leadership</div>
-        <p class="team-bio">A dedicated team of tax professionals covering FBR, SRB, PRA, and KPRA matters — from routine compliance through tribunal-level dispute representation.</p>
-        <div class="team-creds"><span>Direct Tax</span><span>Indirect Tax</span><span>Disputes</span></div>
+      <div class="team-card" tabindex="0">
+        <div class="team-avatar">ZA</div>
+        <h3>Zaid Abid</h3>
+        <div class="team-role">Partner — FCA</div>
+        <p class="team-bio">Fellow Chartered Accountant with over 15 years of professional experience across audit, finance, taxation, corporate compliance, and advisory services. Previously with Deloitte, Cherat, and Mustaqim — a blend of professional practice and industry experience.</p>
+        <div class="team-creds"><span>FCA — ICAP</span><span>Audit, Tax &amp; Advisory</span></div>
+        <div class="team-overlay">
+          <h3>Zaid Abid</h3>
+          <p>Zaid Abid is a Fellow Chartered Accountant with over 15 years professional experience across audit, finance, taxation, corporate compliance, and advisory services. He has previously worked with Deloitte, Cherat, and Mustaqim, bringing a blend of professional practice and industry experience to the firm's client engagements.</p>
+        </div>
       </div>
       <div class="team-card">
         <div class="team-avatar">{ICON["advisory"]}</div>
@@ -848,7 +852,7 @@ page("industries.html",
     <div class="figure-panel reveal">
       <h3>Market entry, handled</h3>
       <div class="fig-rows">
-        <div class="fig-row"><span>Typical incorporation timeline</span><b>6–8 wks</b></div>
+        <div class="fig-row"><span>Typical incorporation timeline</span><b>2–4 wks</b></div>
         <div class="fig-row"><span>Registrations managed</span><b>All</b></div>
         <div class="fig-row"><span>Points of contact you need</span><b>1</b></div>
       </div>
@@ -943,11 +947,11 @@ page("careers.html",
       <p>We hire year-round for strong candidates. If none of these fit, write to us anyway.</p>
     </div>
     <div class="offer-list reveal-stagger" style="max-width:720px">
-      <a class="offer-item" href="mailto:info@umcoca.com?subject=Application%20—%20Audit%20Senior" style="text-decoration:none">{ICON["check"]}<div><h4>Audit Senior — Karachi</h4><p>3+ years in external audit; ICAP finalist or newly qualified preferred.</p></div></a>
-      <a class="offer-item" href="mailto:info@umcoca.com?subject=Application%20—%20Tax%20Associate" style="text-decoration:none">{ICON["check"]}<div><h4>Tax Associate — Karachi</h4><p>1–3 years in direct or indirect tax; strong drafting and FBR portal fluency.</p></div></a>
-      <a class="offer-item" href="mailto:info@umcoca.com?subject=Application%20—%20Trainee%20(ICAP/ACCA)" style="text-decoration:none">{ICON["check"]}<div><h4>Trainees — ICAP / ACCA</h4><p>Training contracts with rotation across audit, tax, and advisory.</p></div></a>
+      <a class="offer-item" href="mailto:info@umairmanzoor.com?subject=Application%20—%20Audit%20Senior" style="text-decoration:none">{ICON["check"]}<div><h4>Audit Senior — Karachi</h4><p>3+ years in external audit; ICAP finalist or newly qualified preferred.</p></div></a>
+      <a class="offer-item" href="mailto:info@umairmanzoor.com?subject=Application%20—%20Audit%20Associate" style="text-decoration:none">{ICON["check"]}<div><h4>Audit Associate — Karachi</h4><p>1–3 years in external audit; strong working-paper discipline and ICAP progression.</p></div></a>
+      <a class="offer-item" href="mailto:info@umairmanzoor.com?subject=Application%20—%20Trainee%20(ICAP/ACCA)" style="text-decoration:none">{ICON["check"]}<div><h4>Trainees — ICAP / ACCA</h4><p>Training contracts with rotation across audit, tax, and advisory.</p></div></a>
     </div>
-    <p class="reveal" style="margin-top:28px; font-size:14px; color:var(--ink-muted)">Apply with your CV at <a href="mailto:info@umcoca.com" style="color:var(--gold-deep); font-weight:600">info@umcoca.com</a>.</p>
+    <p class="reveal" style="margin-top:28px; font-size:14px; color:var(--ink-muted)">Apply with your CV at <a href="mailto:info@umairmanzoor.com" style="color:var(--gold-deep); font-weight:600">info@umairmanzoor.com</a>.</p>
   </div>
 </section>
 <section class="section">
@@ -994,8 +998,8 @@ else:
         <div class="sc-actions">
           <a href="#enquiry" class="btn btn-gold">Book online meeting {ICON["arrow"]}</a>
           <a href="tel:+922137120735" class="btn btn-ghost-dark">Call (92) 21 3712 0735</a>
-          <a href="https://wa.me/923113110415" target="_blank" rel="noopener" class="btn btn-ghost-dark">WhatsApp us {ICON["arrow"]}</a>
-          <a href="mailto:info@umcoca.com" class="btn btn-ghost-dark">Email info@umcoca.com</a>
+          <a href="https://wa.me/923106569999" target="_blank" rel="noopener" class="btn btn-ghost-dark">WhatsApp us {ICON["arrow"]}</a>
+          <a href="mailto:info@umairmanzoor.com" class="btn btn-ghost-dark">Email info@umairmanzoor.com</a>
         </div>
       </div>
     </div>
@@ -1003,7 +1007,7 @@ else:
 </section>"""
 page("contact.html",
      "Contact — Book a Consultation | UMCO Chartered Accountants",
-     "Book a consultation with a senior UMCO advisor. Offices in DHA Phase 7, Karachi. Response within one business day.",
+     "Book a consultation with a senior UMCO advisor. Office in Shayan Iconic Tower, Shaheed-e-Millat Road, Karachi. Response within one business day.",
      f"""
 <section class="page-hero">
   <div class="wrap">
@@ -1017,10 +1021,10 @@ page("contact.html",
     <div class="reveal">
       <div class="kicker">Reach us directly</div>
       <div class="offer-list">
-        <a class="offer-item" href="mailto:info@umcoca.com" style="text-decoration:none">{ICON["check"]}<div><h4>Email</h4><p>info@umcoca.com</p></div></a>
+        <a class="offer-item" href="mailto:info@umairmanzoor.com" style="text-decoration:none">{ICON["check"]}<div><h4>Email</h4><p>info@umairmanzoor.com</p></div></a>
         <a class="offer-item" href="tel:+922137120735" style="text-decoration:none">{ICON["check"]}<div><h4>Phone</h4><p>(92) 21 3712 0735</p></div></a>
-        <a class="offer-item" href="https://wa.me/923113110415" target="_blank" rel="noopener" style="text-decoration:none">{ICON["check"]}<div><h4>WhatsApp</h4><p>+92 311 311 0415</p></div></a>
-        <div class="offer-item">{ICON["check"]}<div><h4>Office</h4><p>DHA Phase 7, Karachi, Pakistan</p></div></div>
+        <a class="offer-item" href="https://wa.me/923106569999" target="_blank" rel="noopener" style="text-decoration:none">{ICON["check"]}<div><h4>WhatsApp</h4><p>+92 310 6569999</p></div></a>
+        <div class="offer-item">{ICON["check"]}<div><h4>Office</h4><p>Office 205, Shayan Iconic Tower, Plot 5, Block 3, D.M.C.H.S, Shaheed-e-Millat Road, Karachi</p></div></div>
       </div>
       <ul class="tick-list" style="margin-top:30px">
         <li>{ICON["check"]} Completely confidential</li>
@@ -1055,10 +1059,10 @@ page("contact.html",
   <div class="wrap">
     <div class="section-head reveal" style="margin-bottom:0">
       <div class="kicker">Find us</div>
-      <h2>DHA Phase 7, <span class="serif-accent">Karachi.</span></h2>
+      <h2>Umair Manzoor &amp; Co. Chartered Accountants, <span class="serif-accent">Shaheed e Millat Road.</span></h2>
     </div>
     <div class="map-shell reveal">
-      <iframe title="UMCO office location — DHA Phase 7, Karachi" src="https://www.google.com/maps?q=DHA+Phase+7,+Karachi,+Pakistan&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      <iframe title="Umair Manzoor &amp; Co Chartered Accountants — office location" src="https://www.google.com/maps?q=Umair+Manzoor+%26+Co+Chartered+Accountants,+Karachi&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
     </div>
   </div>
 </section>""",
