@@ -181,3 +181,122 @@
     });
   });
 })();
+
+/* ── scroll progress bar ── */
+(function () {
+  'use strict';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var bar = document.createElement('div');
+  bar.className = 'scroll-progress';
+  document.body.appendChild(bar);
+  var ticking = false;
+  function update() {
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = h > 0 ? (window.scrollY / h) * 100 : 0;
+    bar.style.width = pct + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function () {
+    if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  update();
+})();
+
+/* ── DMCL hero: switch state on first scroll ── */
+(function () {
+  'use strict';
+  var hero = document.getElementById('dh');
+  if (!hero) return;
+  var dots = hero.querySelectorAll('.dh-dot');
+  var switched = false;
+
+  function switchTo(idx) {
+    switched = idx === 1;
+    hero.classList.toggle('switched', switched);
+    dots.forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+  }
+
+  // dot clicks
+  dots.forEach(function (d) {
+    d.addEventListener('click', function () { switchTo(parseInt(d.dataset.dh, 10)); });
+  });
+
+  // first downward scroll triggers state 2
+  window.addEventListener('scroll', function onFirstScroll() {
+    if (window.scrollY > 40) {
+      switchTo(1);
+      window.removeEventListener('scroll', onFirstScroll);
+    }
+  }, { passive: true });
+})();
+
+/* ── Services panel tab switcher (hover only; click navigates) ── */
+(function () {
+  'use strict';
+  var tabs   = document.querySelectorAll('.svp-tab');
+  var panels = document.querySelectorAll('.svp-panel');
+  var bgs    = document.querySelectorAll('.svp-bg');
+  if (!tabs.length) return;
+
+  function activate(idx) {
+    tabs.forEach(function (t, i)   { t.classList.toggle('active', i === idx); });
+    panels.forEach(function (p, i) { p.classList.toggle('active', i === idx); });
+    bgs.forEach(function (b, i)    { b.classList.toggle('active', i === idx); });
+  }
+
+  tabs.forEach(function (tab) {
+    /* hover → change selection */
+    tab.addEventListener('mouseenter', function () {
+      activate(parseInt(tab.dataset.svp, 10));
+    });
+    /* click → navigate to service page; do NOT change selection */
+    tab.addEventListener('click', function (e) {
+      var href = tab.dataset.href;
+      if (href) { window.location.href = href; }
+    });
+  });
+})();
+
+/* ── More overlay ── */
+(function () {
+  'use strict';
+  var btn     = document.getElementById('navMoreBtn');
+  var overlay = document.getElementById('moreOverlay');
+  var close   = document.getElementById('moreClose');
+  if (!btn || !overlay) return;
+
+  function open() {
+    overlay.classList.add('open');
+    overlay.setAttribute('aria-hidden', 'false');
+    btn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function shut() {
+    overlay.classList.remove('open');
+    overlay.setAttribute('aria-hidden', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  btn.addEventListener('click', open);
+  close.addEventListener('click', shut);
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) shut(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') shut(); });
+})();
+
+/* ── magnetic pull on primary buttons ── */
+(function () {
+  'use strict';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia && window.matchMedia('(hover: none)').matches) return;
+  document.querySelectorAll('.btn-gold, .btn-navy').forEach(function (btn) {
+    btn.addEventListener('mousemove', function (e) {
+      var r = btn.getBoundingClientRect();
+      var mx = e.clientX - r.left - r.width / 2;
+      var my = e.clientY - r.top - r.height / 2;
+      btn.style.transform = 'translate(' + (mx * 0.18) + 'px,' + (my * 0.28) + 'px)';
+    });
+    btn.addEventListener('mouseleave', function () { btn.style.transform = ''; });
+  });
+})();
