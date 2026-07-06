@@ -2,10 +2,10 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "umcoca-site",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8080"],
-      "port": 8080
+      "name": "umcoca2",
+      "runtimeExecutable": "/usr/bin/ruby",
+      "runtimeArgs": ["-e", "require 'webrick'; WEBrick::HTTPServer.new(Port: 3100, DocumentRoot: '/tmp/umcoca2-site').start"],
+      "port": 3100
     }
   ]
 }
