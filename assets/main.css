@@ -35,7 +35,7 @@
   --t-fast: 220ms var(--ease);
   --t-med: 420ms var(--ease);
 
-  --nav-h: 76px;
+  --nav-h: 94px;
 }
 
 html { scroll-behavior: smooth; overflow-x: hidden; }
@@ -130,7 +130,7 @@ img { max-width: 100%; display: block; }
 .nav.scrolled { border-bottom-color: var(--line); box-shadow: 0 6px 24px rgba(10,22,40,0.06); }
 .nav-row { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 .brand { display: flex; align-items: center; text-decoration: none; }
-.brand img { height: 52px; width: auto; mix-blend-mode: multiply; }
+.brand img { height: 64px; width: auto; mix-blend-mode: multiply; }
 .nav-menu { display: flex; align-items: center; gap: 2px; list-style: none; }
 .nav-menu a {
   position: relative; display: block;
