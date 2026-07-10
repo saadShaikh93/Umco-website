@@ -852,6 +852,9 @@ img { max-width: 100%; display: block; }
 
 /* ── responsive ── */
 @media (max-width: 1020px) {
+  .nav-menu { display: none; }
+  .nav-more-btn { display: none; }
+  .nav-burger { display: flex; }
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
   .ind-grid { grid-template-columns: repeat(2, 1fr); }
   .case-grid, .team-grid, .insight-grid { grid-template-columns: repeat(2, 1fr); }
@@ -862,8 +865,10 @@ img { max-width: 100%; display: block; }
   .metric:nth-child(odd) { border-left: none; padding-left: 0; }
 }
 @media (max-width: 760px) {
-  .nav-menu, .nav-actions .btn { display: none; }
+  .nav-menu { display: none; }
   .nav-burger { display: flex; }
+  .nav-actions { gap: 10px; }
+  .nav-actions .btn { padding: 10px 14px; font-size: 13px; }
   .section { padding: 72px 0; }
   .section-tight { padding: 56px 0; }
   .hero { padding-top: calc(var(--nav-h) + 64px); }
