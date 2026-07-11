@@ -1903,10 +1903,19 @@ blockquote { font-size: 14.5px; line-height: 1.75; color: var(--ink-muted); marg
 
 /* mobile tweaks */
 @media (max-width: 680px) {
+  /* Use dynamic viewport height so mobile browser toolbars don't clip the hero */
+  .dh { height: 100svh; min-height: 600px; }
+  /* Stronger, more even veil so hero text stays legible over any background */
+  .dh-veil {
+    background: linear-gradient(165deg, rgba(5,11,22,0.82) 0%, rgba(5,11,22,0.66) 55%, rgba(5,11,22,0.50) 100%);
+  }
   .dh-deco { display: none; }
+  .dh-inner { padding-top: 64px; padding-bottom: 150px; }
   .dh-headline { font-size: clamp(2.4rem, 10vw, 3.4rem); }
+  .dh-sub { font-size: 1rem; }
   .dh-scroll-hint { display: none; }
   .dh-social { display: none; }
+  .dh-dots { bottom: 150px; }
   .dh-metrics { flex-wrap: wrap; }
   .dh-metric { flex: 0 0 50%; border-bottom: 1px solid rgba(255,255,255,0.08); }
 }
