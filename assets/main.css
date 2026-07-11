@@ -2153,14 +2153,22 @@ a.indx:hover .indx-cta { opacity: 1; transform: none; }
   backdrop-filter: blur(8px);
 }
 
-/* Mobile */
+/* Mobile / tablet — stack to one column, show only the active service panel */
 @media (max-width: 1024px) {
-  .svp-wrap { grid-template-columns: 1fr; gap: 56px; padding-top: 80px; padding-bottom: 80px; }
+  .svp-section { min-height: auto; background: #070d18; }
+  /* Drop the crossfading background image on mobile — it only bled through the
+     single-column gaps as faint chart artifacts. Solid dark reads cleanly. */
+  .svp-bg-stack { display: none; }
+  .svp-veil { background: linear-gradient(180deg, rgba(7,13,24,0.6) 0%, rgba(7,13,24,0.35) 100%); }
+  .svp-wrap { grid-template-columns: 1fr; gap: 32px; padding-top: 80px; padding-bottom: 80px; }
+  .svp-right { min-height: auto; }
+  /* Inactive panels must be removed from flow, not just made transparent —
+     otherwise they leave a tall empty band with the background bleeding through. */
+  .svp-panel { display: none; position: relative; inset: auto; opacity: 1; transform: none; pointer-events: auto; }
+  .svp-panel.active { display: flex; }
 }
 @media (max-width: 640px) {
-  .svp-wrap { padding-top: 64px; padding-bottom: 64px; }
-  .svp-panel { position: relative; inset: auto; }
-  .svp-right { min-height: auto; }
+  .svp-wrap { padding-top: 60px; padding-bottom: 60px; }
 }
 
 /* ── Proof of work band (compliant replacement for testimonials) ── */
