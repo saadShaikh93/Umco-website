@@ -1565,6 +1565,11 @@ img { max-width: 100%; display: block; }
   .wb { padding: 24px 20px; }
   .wb:nth-child(6) { grid-column: span 2; }
   .wb-deco-icon { display: none; }
+  /* Stack the header so the h2 wraps within the viewport instead of
+     overflowing (it was a non-shrinking flex item with a 520px max-width). */
+  .why-headline { flex-direction: column; align-items: flex-start; gap: 14px; }
+  .why-headline h2 { max-width: 100%; flex-shrink: 1; font-size: clamp(1.5rem, 6.8vw, 2.1rem); }
+  .why-lead { max-width: 100%; padding-bottom: 0; }
 }
 
 /* ── Testimonials ─────────────────────────────────────────────────── */
