@@ -170,7 +170,7 @@
 /* ── Calendly popup on Book Consultation buttons ── */
 (function () {
   'use strict';
-  var URL = 'https://calendly.com/umair-umairmanzoor/30min';
+  var URL = 'https://calendly.com/zaidabid-umairmanzoor/30min';
   document.querySelectorAll('[data-calendly]').forEach(function (el) {
     el.addEventListener('click', function (ev) {
       if (window.Calendly && typeof Calendly.initPopupWidget === 'function') {
